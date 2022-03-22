@@ -23,30 +23,27 @@ let barWidth = document.querySelector(".value");
 //   barWidth.style.width = `${percent}%`;
 // });
 
-window.addEventListener(
-  "scroll",
-  _.throttle(() => {
-    // let scrollDepth = Math.floor((window.scrollY / body.scrollHeight) * 100);
-    // let getScroll = Math.floor((body.scrollTop / body.height - window.height) * 100);
-    let html = document.documentElement;
-    let winScroll = html.scrollTop;
-    let height = html.scrollHeight - html.clientHeight;
-    let scrolled = Math.floor((winScroll / height) * 100);
+window.addEventListener("scroll", () => {
+  let html = document.documentElement;
+  let winScroll = html.scrollTop;
+  let height = html.scrollHeight - html.clientHeight;
+  let scrolled = Math.floor((winScroll / height) * 100);
+  barWidth.style.width = `${scrolled}%`;
+  throttling();
+});
 
-    barWidth.style.width = `${scrolled}%`;
-    console.log("scrollTop", winScroll);
-    // console.log("scrollHeight - clientHeight", height);
-    // console.log("percent", scrolled);
-    let firstBox = document.querySelector(".salmon");
-    let secondBox = document.querySelector(".sandyBrown");
-    let thirdBox = document.querySelector(".yellow");
-
-    if (0 === firstBox.getBoundingClientRect().top) {
-      console.log("100px 도달");
-    } else if (0 === secondBox.getBoundingClientRect().top) {
-      console.log("550px 도달");
-    } else if (0 === thirdBox.getBoundingClientRect().top) {
-      console.log("1250px 도달");
-    }
-  }, 1000)
-);
+const throttling = _.throttle(() => {
+  let html = document.documentElement;
+  let winScroll = html.scrollTop;
+  console.log("scrollTop", winScroll);
+  let firstBox = document.querySelector(".salmon");
+  let secondBox = document.querySelector(".sandyBrown");
+  let thirdBox = document.querySelector(".yellow");
+  if (0 === firstBox.getBoundingClientRect().top) {
+    console.log("100px 도달");
+  } else if (0 === secondBox.getBoundingClientRect().top) {
+    console.log("550px 도달");
+  } else if (0 === thirdBox.getBoundingClientRect().top) {
+    console.log("1250px 도달");
+  }
+}, 1000);
