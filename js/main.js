@@ -35,7 +35,21 @@ window.addEventListener(
 
     barWidth.style.width = `${scrolled}%`;
     console.log("scrollTop", winScroll);
-    console.log("scrollHeight - clientHeight", height);
-    console.log("percent", scrolled);
+    // console.log("scrollHeight - clientHeight", height);
+    // console.log("percent", scrolled);
+    let firstBox = document.querySelector(".salmon");
+    // console.log(firstBox.scrollHeight);
+    let secondBox = document.querySelector(".sandyBrown");
+    // console.log(secondBox.scrollHeight);
+    let thirdBox = document.querySelector(".yellow");
+    // console.log(thirdBox.scrollHeight);
+
+    if (winScroll === firstBox.scrollHeight) {
+      console.log("100px");
+    } else if (winScroll === secondBox.scrollHeight) {
+      console.log("550px");
+    } else if (winScroll === thirdBox.scrollHeight) {
+      console.log("1250px");
+    }
   }, 1000)
 );
