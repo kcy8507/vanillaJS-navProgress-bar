@@ -23,16 +23,19 @@ let barWidth = document.querySelector(".value");
 //   barWidth.style.width = `${percent}%`;
 // });
 
-window.addEventListener("scroll", (e) => {
-  // let scrollDepth = Math.floor((window.scrollY / body.scrollHeight) * 100);
-  // let getScroll = Math.floor((body.scrollTop / body.height - window.height) * 100);
-  let html = document.documentElement;
+window.addEventListener(
+  "scroll",
+  _.throttle(() => {
+    // let scrollDepth = Math.floor((window.scrollY / body.scrollHeight) * 100);
+    // let getScroll = Math.floor((body.scrollTop / body.height - window.height) * 100);
+    let html = document.documentElement;
+    let winScroll = html.scrollTop;
+    let height = html.scrollHeight - html.clientHeight;
+    let scrolled = Math.floor((winScroll / height) * 100);
 
-  let winScroll = html.scrollTop;
-  let height = html.scrollHeight - html.clientHeight;
-  let scrolled = Math.floor((winScroll / height) * 100);
-  barWidth.style.width = `${scrolled}%`;
-  console.log("scrollTop", winScroll);
-  console.log("scrollHeight - clientHeight", height);
-  console.log("percent", scrolled);
-});
+    barWidth.style.width = `${scrolled}%`;
+    console.log("scrollTop", winScroll);
+    console.log("scrollHeight - clientHeight", height);
+    console.log("percent", scrolled);
+  }, 1000)
+);
