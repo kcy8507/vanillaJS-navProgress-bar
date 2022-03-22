@@ -38,18 +38,15 @@ window.addEventListener(
     // console.log("scrollHeight - clientHeight", height);
     // console.log("percent", scrolled);
     let firstBox = document.querySelector(".salmon");
-    // console.log(firstBox.scrollHeight);
     let secondBox = document.querySelector(".sandyBrown");
-    // console.log(secondBox.scrollHeight);
     let thirdBox = document.querySelector(".yellow");
-    // console.log(thirdBox.scrollHeight);
 
-    if (winScroll === firstBox.scrollHeight) {
-      console.log("100px");
-    } else if (winScroll === secondBox.scrollHeight) {
-      console.log("550px");
-    } else if (winScroll === thirdBox.scrollHeight) {
-      console.log("1250px");
+    if (0 === firstBox.getBoundingClientRect().top) {
+      console.log("100px 도달");
+    } else if (0 === secondBox.getBoundingClientRect().top) {
+      console.log("550px 도달");
+    } else if (0 === thirdBox.getBoundingClientRect().top) {
+      console.log("1250px 도달");
     }
   }, 1000)
 );
