@@ -31,19 +31,31 @@ window.addEventListener("scroll", () => {
   barWidth.style.width = `${scrolled}%`;
   throttling();
 });
+//scroll 될 때마다 프로그레스 바 width가 채워진다.
 
 const throttling = _.throttle(() => {
+  //lodash의 throttle 사용
   let html = document.documentElement;
   let winScroll = html.scrollTop;
+  let scrollY = window.scrollY;
+  let windowH = window.height;
+
+  console.log("scrollY", scrollY);
   console.log("scrollTop", winScroll);
   let firstBox = document.querySelector(".salmon");
   let secondBox = document.querySelector(".sandyBrown");
-  let thirdBox = document.querySelector(".yellow");
-  if (0 === firstBox.getBoundingClientRect().top) {
-    console.log("100px 도달");
-  } else if (0 === secondBox.getBoundingClientRect().top) {
-    console.log("550px 도달");
-  } else if (0 === thirdBox.getBoundingClientRect().top) {
-    console.log("1250px 도달");
-  }
+
+  let items = document.querySelectorAll(".container");
+
+  // for (i = 0; i < items.length; i++) {
+  items.forEach((item, i) => {
+    let winH = window.innerHeight;
+    items[i].getBoundingClientRect().top;
+    if (items[3].getBoundingClientRect().top < winH) {
+      items[3].firstElementChild.classList.add("active");
+      console.log("애니메이션 시작");
+    }
+  });
+  //items의 4번째의 윗변의 윈도우에서부터 길이가 window 높이보다 작아지면, 애니메이션 추가.
+  // }
 }, 1000);

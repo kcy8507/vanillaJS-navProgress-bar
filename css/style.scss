@@ -23,9 +23,29 @@ body {
 }
 .yellow {
   background: rgb(255, 227, 144);
-  height: 1250px;
+  height: 100vh;
+  border-bottom: solid 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-weight: 800;
+    color: rgb(71, 141, 255);
+  }
 }
-
+.active {
+  animation-name: animationTxt;
+  animation-duration: 3s;
+}
+@keyframes animationTxt {
+  from {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+  }
+}
 .bar {
   width: 100%;
   height: 10px;
